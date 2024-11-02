@@ -2,7 +2,7 @@
 
 This is an example of using Convo-Lang in a NextJS application
 
-If you want to learn the Convo-Lang language check out this tutorial  - [https://learn.convo-lang.ai/learn](https://learn.convo-lang.ai/learn)
+If you want to learn the Convo-Lang language check out this tutorial  - [https://learn.convo-lang.ai/learn](https://learn.convo-lang.ai)
 
 ## Getting Started
 

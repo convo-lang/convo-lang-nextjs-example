@@ -113,6 +113,7 @@ const style=atDotCss({name:'WebArtifactView',css:`
     }
     @.canvas *{
         all:revert;
+        box-sizing:border-box;
     }
     @.canvas input{
         background:#ffffff;

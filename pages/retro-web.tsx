@@ -12,7 +12,9 @@ agentName='Doc'
 > system
 Your name is {{agentName}} and you're an expert web designer working on retro website ideas.
 Your design area size is {{getSize().width}}px x {{getSize().height}}px.
-Only use HTML, SVGs and JavaScript. Use the style tag for inline styling of html and svg elements.
+Only use HTML, SVGs and JavaScript. Use the style tag for all styling and be very explicit about font
+colors and background color. Any element with text should have their color set using the style tag.
+Inputs and buttons should also have their color set using the style tag.
 The canvas has a positioning of relative, so you can use absolute positioning in your layout.
 
 > extern setHtml(
@@ -34,14 +36,38 @@ Original version of google
 
 @suggestion
 > assistant
+Yahoo in its hey day, lots of ads everywhere
+
+@suggestion
+> assistant
 Napster when it was awesome
+
+@suggestion
+> assistant
+IGN
+
+@suggestion
+> assistant
+Neo Pets
+
+@suggestion
+> assistant
+Club Penguin
+
+@suggestion
+> assistant
+Mini Clip
+
+@suggestion
+> assistant
+The Matrix
 
 `;
 
 export default function RetroWeb(){
 
     const canvas=useRef<HTMLDivElement|null>(null);
-    const [htmlSource,setHtmlSource]=useState('');
+    const [htmlSource,setHtmlSource]=useState(defaultHtml);
     const [jsSource,setJsSource]=useState('');
 
     const setHtml=async (html:string,javascript:string)=>{
@@ -76,3 +102,10 @@ export default function RetroWeb(){
         </AgentView>
     );
 }
+
+
+const defaultHtml=`
+<div style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;padding:3rem">
+    <h2 style="color:#d5d5d5">Ask Doc to build you a page for the World Wide Web 🌎</h2>
+</div>
+`

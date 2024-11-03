@@ -1,8 +1,9 @@
 import { atDotCss } from "@iyio/at-dot-css";
+import { ScrollView } from "@iyio/react-common";
 import { LazyCodeInput } from "@iyio/syn-taxi";
 import { MutableRefObject, useEffect, useState } from "react";
 
-export interface ArtifactsViewProps
+export interface WebArtifactViewProps
 {
     canvas:MutableRefObject<HTMLDivElement|null>;
     html:string;
@@ -11,13 +12,13 @@ export interface ArtifactsViewProps
     onJsChange:(js:string)=>void;
 }
 
-export function ArtifactsView({
+export function WebArtifactView({
     canvas,
     html,
     onHtmlChange,
     js,
     onJsChange
-}:ArtifactsViewProps){
+}:WebArtifactViewProps){
 
     const [tab,setTab]=useState<'rendered'|'html'|'js'>('rendered');
 
@@ -42,22 +43,26 @@ export function ArtifactsView({
                 dangerouslySetInnerHTML={{__html:html}}
             />
             <div className={style.container({active:tab==='html'})}>
-                <LazyCodeInput
-                    absFill
-                    value={html}
-                    language="html"
-                    lineNumbers
-                    onChange={onHtmlChange}
-                />
+                <ScrollView absFill containerFill containerCol>
+                    <LazyCodeInput
+                        flex1
+                        value={html}
+                        language="html"
+                        lineNumbers
+                        onChange={onHtmlChange}
+                    />
+                </ScrollView>
             </div>
             <div className={style.container({active:tab==='js'})}>
-                <LazyCodeInput
-                    absFill
-                    value={js}
-                    language="javascript"
-                    lineNumbers
-                    onChange={onJsChange}
-                />
+                <ScrollView absFill containerFill containerCol>
+                    <LazyCodeInput
+                        flex1
+                        value={js}
+                        language="javascript"
+                        lineNumbers
+                        onChange={onJsChange}
+                    />
+                </ScrollView>
 
             </div>
             <div className={style.buttons()}>
@@ -70,12 +75,12 @@ export function ArtifactsView({
 
 }
 
-const style=atDotCss({name:'ArtifactsView',css:`
+// For syntax highlighting of at-dot-css install the "high-js" VSCode extension.
+const style=atDotCss({name:'WebArtifactView',css:`
     @.container{
         display:none;
         overflow:hidden;
         border-radius:8px;
-        border:1px solid #444;
         position:absolute;
         left:0;
         top:0;

@@ -46,7 +46,7 @@ const sharedConvo=/*convo*/`
     > system
     Take into considerations the following user instructions
     <user-instructions>
-
+    {{userInstructions}}
     </user-instructions>
 
 `
@@ -58,7 +58,7 @@ export default function PdfAdventure(){
     const [screen,setScreen]=useState<'upload'|'adventure'|'win'|'lose'>('upload');
     const end=screen==='win' || screen=='lose';
 
-    const [artStyle,setArtStyle]=useState('pixel art');
+    const [artStyle,setArtStyle]=useState('60\'s retro');
 
     const [levelIndex,setLevelIndex]=useState(0);
     const [levels,setLevels]=useState<Level[]>([]);
